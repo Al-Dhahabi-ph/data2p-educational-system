@@ -1,0 +1,1 @@
+{"id": "data2p-educational-system-bxri", "lang": "typescript"}
