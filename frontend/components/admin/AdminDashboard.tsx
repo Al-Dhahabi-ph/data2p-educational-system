@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import AdminHeader from './AdminHeader';
 import AdminSidebar from './AdminSidebar';
 import Dashboard from './Dashboard';
@@ -22,13 +22,13 @@ export default function AdminDashboard() {
         
         <main className="p-6">
           <Routes>
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/subjects" element={<SubjectsManagement />} />
-            <Route path="/lectures" element={<LecturesManagement />} />
-            <Route path="/sections" element={<SectionsManagement />} />
-            <Route path="/resources" element={<ResourcesManagement />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/" element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="subjects" element={<SubjectsManagement />} />
+            <Route path="lectures" element={<LecturesManagement />} />
+            <Route path="sections" element={<SectionsManagement />} />
+            <Route path="resources" element={<ResourcesManagement />} />
+            <Route path="settings" element={<Settings />} />
+            <Route path="" element={<Navigate to="dashboard" replace />} />
           </Routes>
         </main>
       </div>

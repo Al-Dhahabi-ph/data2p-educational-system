@@ -14,8 +14,7 @@ export default function AdminPage() {
   return (
     <AdminProvider>
       <Routes>
-        <Route path="/*" element={<AdminDashboard />} />
-        <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
+        <Route path="*" element={<AdminDashboard />} />
       </Routes>
     </AdminProvider>
   );

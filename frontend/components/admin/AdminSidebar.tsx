@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Home, BookOpen, GraduationCap, Folder, Settings, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAdmin } from '../../contexts/AdminContext';
@@ -14,8 +14,13 @@ const navigation = [
 
 export default function AdminSidebar() {
   const { sidebarOpen, setSidebarOpen } = useAdmin();
+  const location = useLocation();
 
   const logoUrl = "https://firebasestorage.googleapis.com/v0/b/movie-and-series-b78d0.appspot.com/o/files%2FIMG_20250915_023025.png?alt=media&token=fa4e5540-463f-41c3-85c0-2831bd8258c6";
+
+  const isActive = (href: string) => {
+    return location.pathname === href || location.pathname.startsWith(href + '/');
+  };
 
   return (
     <>
@@ -53,13 +58,11 @@ export default function AdminSidebar() {
             <NavLink
               key={item.name}
               to={item.href}
-              className={({ isActive }) =>
-                `flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
-                  isActive
-                    ? 'bg-[#1E94D4] text-white'
-                    : 'text-[#153864] hover:bg-[#1E94D4]/10'
-                }`
-              }
+              className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-colors ${
+                isActive(item.href)
+                  ? 'bg-[#1E94D4] text-white'
+                  : 'text-[#153864] hover:bg-[#1E94D4]/10'
+              }`}
               onClick={() => setSidebarOpen(false)}
             >
               <item.icon className="h-5 w-5" />
